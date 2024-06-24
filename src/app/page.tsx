@@ -3,6 +3,7 @@ import Image from "next/image";
 import {Content}  from '../components/home/summarizer';
 import Example from "../components/home/features";
 import Example1 from "../components/home/testimonial";
+import ShiftingContactForm from "../components/home/contact";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Content />
       <Example />
       <Example1 />
+      <ShiftingContactForm />
     </>
   );
 }
