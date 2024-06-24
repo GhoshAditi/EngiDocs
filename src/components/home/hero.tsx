@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import React from "react";
-import { FlipWords } from "../common/Flipwords"; // Adjust the path as per your project structure
+import { FlipWords } from "../home/Flipwords"; // Adjust the path as per your project structure
 
 interface SquareData {
   id: number;

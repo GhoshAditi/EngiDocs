@@ -3,7 +3,7 @@ import { SiInstagram, SiLinkedin, SiTwitter, SiYoutube } from "react-icons/si";
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
-import ShuffleHero from "../common/hero"; // Adjust the import path as needed
+import ShuffleHero from "../home/hero"; // Adjust the import path as needed
 
 export const Navbar: React.FC = () => {
   const [navActive, setNavActive] = useState(false);
