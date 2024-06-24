@@ -1,26 +1,29 @@
-"use client"
+"use client";
 import { SiInstagram, SiLinkedin, SiTwitter, SiYoutube } from "react-icons/si";
 import React, { useState } from "react";
-
 import { AnimatePresence, motion } from "framer-motion";
 import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
+import ShuffleHero from "../common/hero"; // Adjust the import path as needed
 
 export const Navbar: React.FC = () => {
+  const [navActive, setNavActive] = useState(false);
+
   return (
-    <div className="h-screen bg-neutral-100">
-      <Nav />
-      <span className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 text-lg text-violet-500">
-        <span> </span> 
-      </span>
-    </div>
+    <>
+      <div style={{ height: '10vh' }} className="bg-white">
+        <Nav active={navActive} setActive={setNavActive} />
+      </div>
+      <ShuffleHero navActive={navActive} />
+    </>
   );
 };
 
-interface NavProps {}
+interface NavProps {
+  active: boolean;
+  setActive: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const Nav: React.FC<NavProps> = () => {
-  const [active, setActive] = useState(false);
-
+const Nav: React.FC<NavProps> = ({ active, setActive }) => {
   return (
     <>
       <HamburgerButton active={active} setActive={setActive} />
