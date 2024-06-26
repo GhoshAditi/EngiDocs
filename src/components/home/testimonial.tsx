@@ -2,7 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { FiDollarSign, FiEye, FiPlay, FiSearch } from "react-icons/fi";
 
-const Example1 = () => {
+const Testimonial = () => {
   return (
     <>
       <SwapColumnFeatures />
@@ -139,7 +139,7 @@ const ExampleFeature = ({ featureInView }: { featureInView: Feature }) => {
   );
 };
 
-export default Example1;
+export default Testimonial;
 
 const features = [
   {

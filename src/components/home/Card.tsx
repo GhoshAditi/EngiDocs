@@ -1,6 +1,6 @@
 import React from 'react'
 
-const footer = () => {
+const Card = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const footer = () => {
   )
 }
 
-export default footer
+export default Card

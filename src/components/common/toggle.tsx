@@ -1,21 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { BsFillCloudyFill, BsStarFill } from "react-icons/bs";
 
 const ToggleWrapper = () => {
   const [mode, setMode] = useState("dark");
+
+  useEffect(() => {
+    if (mode === "dark") {
+      document.body.setAttribute("data-theme", "dark");
+    } else {
+      document.body.removeAttribute("data-theme");
+    }
+  }, [mode]);
+
   return (
-    <div
-      className={`px-4 h-[250px] flex items-center justify-center transition-colors ${
-        mode === "dark" ? "bg-slate-900" : "bg-slate-50"
-      }`}
-    >
+    <div className="fixed top-8 right-28 z-20">
       <DarkModeToggle mode={mode} setMode={setMode} />
     </div>
   );
 };
 
-const DarkModeToggle = ({ mode, setMode }: { mode: string, setMode: React.Dispatch<React.SetStateAction<string>> }) => {
+const DarkModeToggle = ({
+  mode,
+  setMode,
+}: {
+  mode: string;
+  setMode: React.Dispatch<React.SetStateAction<string>>;
+}) => {
   return (
     <button
       onClick={() => setMode(mode === "dark" ? "light" : "dark")}
