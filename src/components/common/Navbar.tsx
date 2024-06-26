@@ -3,15 +3,17 @@ import { SiInstagram, SiLinkedin, SiTwitter, SiYoutube } from "react-icons/si";
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
-import ShuffleHero from "../home/hero"; // Adjust the import path as needed
+import ShuffleHero from "../home/hero";
+import ToggleWrapper from "./toggle";
 
 export const Navbar: React.FC = () => {
   const [navActive, setNavActive] = useState(false);
 
   return (
     <>
-      <div style={{ height: '10vh' }} className="bg-white">
-        <Nav active={navActive} setActive={setNavActive} />
+      <div className="bg-white z-100">
+      
+      <ToggleWrapper/><Nav active={navActive} setActive={setNavActive} />
       </div>
       <ShuffleHero navActive={navActive} />
     </>
@@ -138,7 +140,7 @@ const HamburgerButton: React.FC<HamburgerButtonProps> = ({ active, setActive }) 
         animate={active ? "open" : "closed"}
         variants={UNDERLAY_VARIANTS}
         style={{ top: 16, right: 16 }}
-        className="fixed z-10 rounded-xl bg-gradient-to-br from-violet-600 to-violet-500 shadow-lg shadow-violet-800/20"
+        className="fixed z-30 rounded-xl bg-gradient-to-br from-violet-600 to-violet-500 shadow-lg shadow-violet-800/20"
       />
 
       <motion.button

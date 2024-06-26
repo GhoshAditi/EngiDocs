@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import React from "react";
-import { FlipWords } from "../home/Flipwords"; // Adjust the path as per your project structure
+import { FlipWords } from "./Flipwords"; // Adjust the path as per your project structure
 
 interface SquareData {
   id: number;
@@ -141,7 +141,7 @@ const squareData: SquareData[] = [
     const words = ["better", "cute", "beautiful", "modern"];
   
     return (
-      <section className="w-full px-8 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto">
+      <section className="w-full px-8 py-24 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto">
         <div>
           <span className="block mb-4 text-xs md:text-sm text-indigo-500 font-medium">
             Better every day

@@ -1,10 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
-const ShiftingContactForm = () => {
-  const [selected, setSelected] = useState("individual");
+const ShiftingContactForm: React.FC = () => {
+  const [selected, setSelected] = useState<"individual" | "company">("individual");
   return (
-    <section className="p-4 bg-slate-100">
+    <section className="p-4 bg-slate-100 dark:bg-slate-900">
       <div className="w-full max-w-6xl mx-auto shadow-lg flex flex-col-reverse lg:flex-row rounded-lg overflow-hidden">
         <Form selected={selected} setSelected={setSelected} />
         <Images selected={selected} />
@@ -13,7 +13,12 @@ const ShiftingContactForm = () => {
   );
 };
 
-const Form = ({ selected, setSelected }: { selected: string, setSelected: React.Dispatch<React.SetStateAction<string>> }): JSX.Element => {
+interface FormProps {
+  selected: "individual" | "company";
+  setSelected: React.Dispatch<React.SetStateAction<"individual" | "company">>;
+}
+
+const Form: React.FC<FormProps> = ({ selected, setSelected }) => {
   return (
     <form
       onSubmit={(e) => e.preventDefault()}
@@ -46,10 +51,6 @@ const Form = ({ selected, setSelected }: { selected: string, setSelected: React.
         {selected === "company" && (
           <motion.div
             initial={{
-              // 104 === height of element + margin
-              // Alternatively can use mode='popLayout' on AnimatePresence
-              // and add the "layout" prop to relevant elements to reduce
-              // distortion
               marginTop: -104,
               opacity: 0,
             }}
@@ -94,7 +95,6 @@ const Form = ({ selected, setSelected }: { selected: string, setSelected: React.
         }}
         whileTap={{
           scale: 0.99,
-          
         }}
         type="submit"
         className={`${
@@ -109,7 +109,7 @@ const Form = ({ selected, setSelected }: { selected: string, setSelected: React.
   );
 };
 
-const FormSelect = ({ selected, setSelected }: { selected: string, setSelected: React.Dispatch<React.SetStateAction<string>> }) => {
+const FormSelect: React.FC<FormProps> = ({ selected, setSelected }) => {
   return (
     <div className="border-[1px] rounded border-white overflow-hidden font-medium w-fit">
       <button
@@ -146,7 +146,11 @@ const FormSelect = ({ selected, setSelected }: { selected: string, setSelected: 
   );
 };
 
-const Images = ({ selected }: { selected: string }): JSX.Element =>  {
+interface ImagesProps {
+  selected: "individual" | "company";
+}
+
+const Images: React.FC<ImagesProps> = ({ selected }) => {
   return (
     <div className="bg-white relative overflow-hidden w-full min-h-[100px]">
       <motion.div
@@ -178,7 +182,7 @@ const Images = ({ selected }: { selected: string }): JSX.Element =>  {
         }}
       />
     </div>
-  ); 
+  );
 };
 
 export default ShiftingContactForm;
