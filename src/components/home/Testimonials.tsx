@@ -126,7 +126,7 @@ const ExampleFeature = ({ featureInView }: { featureInView: Feature }) => {
           <span className="text-green-300">~</span> Show a part of your product
           that explains what{" "}
           <span className="inline-block rounded bg-indigo-600 px-1 font-semibold">
-            "{featureInView.title}"
+            &quot;{featureInView.title}&quot;
           </span>{" "}
           means.
         </p>
@@ -145,7 +145,7 @@ const features = [
   {
     id: 1,
     callout: "Get noticed",
-    title: "It's simple",
+    title: "It&apos;s simple",
     description:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor iusto quaerat qui, illo incidunt suscipit fugiat distinctio officia earum eius quae officiis quis harum animi.",
     contentPosition: "r",
@@ -154,7 +154,7 @@ const features = [
   {
     id: 2,
     callout: "Find people",
-    title: "They're all here",
+    title: "They&apos;re all here",
     description:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor iusto quaerat qui, illo incidunt suscipit fugiat distinctio officia earum eius quae officiis quis harum animi.",
     contentPosition: "l",
@@ -163,7 +163,7 @@ const features = [
   {
     id: 3,
     callout: "Have fun",
-    title: "Let's party",
+    title: "Let&apos;s party",
     description:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor iusto quaerat qui, illo incidunt suscipit fugiat distinctio officia earum eius quae officiis quis harum animi.",
     contentPosition: "r",
