@@ -145,7 +145,7 @@ const features = [
   {
     id: 1,
     callout: "Get noticed",
-    title: "It&apos;s simple",
+    title: "Its simple",
     description:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor iusto quaerat qui, illo incidunt suscipit fugiat distinctio officia earum eius quae officiis quis harum animi.",
     contentPosition: "r",
@@ -154,7 +154,7 @@ const features = [
   {
     id: 2,
     callout: "Find people",
-    title: "They&apos;re all here",
+    title: "They are all here",
     description:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor iusto quaerat qui, illo incidunt suscipit fugiat distinctio officia earum eius quae officiis quis harum animi.",
     contentPosition: "l",
@@ -163,7 +163,7 @@ const features = [
   {
     id: 3,
     callout: "Have fun",
-    title: "Let&apos;s party",
+    title: "Lets party",
     description:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor iusto quaerat qui, illo incidunt suscipit fugiat distinctio officia earum eius quae officiis quis harum animi.",
     contentPosition: "r",
