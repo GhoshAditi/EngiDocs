@@ -88,7 +88,7 @@ const Content = ({ setFeatureInView, featureInView }: { setFeatureInView: React.
           featureInView.contentPosition === "l" ? "flex-start" : "flex-end",
       }}
     >
-      <div className="grid h-full w-full place-content-center px-4 py-12 md:w-2/5 md:px-8 md:py-8">
+      <div className="grid h-full w-full  place-content-center px-4 py-12 md:w-2/5 md:px-8 md:py-8">
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -126,7 +126,7 @@ const ExampleFeature = ({ featureInView }: { featureInView: Feature }) => {
           <span className="text-green-300">~</span> Show a part of your product
           that explains what{" "}
           <span className="inline-block rounded bg-indigo-600 px-1 font-semibold">
-            "{featureInView.title}"
+            &quot;{featureInView.title}&quot;
           </span>{" "}
           means.
         </p>
@@ -145,7 +145,7 @@ const features = [
   {
     id: 1,
     callout: "Get noticed",
-    title: "It's simple",
+    title: "Its simple",
     description:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor iusto quaerat qui, illo incidunt suscipit fugiat distinctio officia earum eius quae officiis quis harum animi.",
     contentPosition: "r",
@@ -154,7 +154,7 @@ const features = [
   {
     id: 2,
     callout: "Find people",
-    title: "They're all here",
+    title: "They are all here",
     description:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor iusto quaerat qui, illo incidunt suscipit fugiat distinctio officia earum eius quae officiis quis harum animi.",
     contentPosition: "l",
@@ -163,7 +163,7 @@ const features = [
   {
     id: 3,
     callout: "Have fun",
-    title: "Let's party",
+    title: "Lets party",
     description:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor iusto quaerat qui, illo incidunt suscipit fugiat distinctio officia earum eius quae officiis quis harum animi.",
     contentPosition: "r",

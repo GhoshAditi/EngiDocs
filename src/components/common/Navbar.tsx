@@ -3,8 +3,8 @@ import { SiInstagram, SiLinkedin, SiTwitter, SiYoutube } from "react-icons/si";
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
-import ShuffleHero from "../home/hero";
 import ToggleWrapper from "./toggle";
+import ShuffleHero from "../home/HeroMain";
 
 export const Navbar: React.FC = () => {
   const [navActive, setNavActive] = useState(false);
@@ -14,8 +14,8 @@ export const Navbar: React.FC = () => {
       <div className="bg-white z-100">
       
       <ToggleWrapper/><Nav active={navActive} setActive={setNavActive} />
-      </div>
       <ShuffleHero navActive={navActive} />
+      </div>    
     </>
   );
 };
