@@ -79,7 +79,7 @@ const Form: React.FC<FormProps> = ({ selected, setSelected }) => {
 
       {/* Info */}
       <div className="mb-6">
-        <p className="text-2xl mb-2">I'd love to ask about...</p>
+        <p className="text-2xl mb-2">I&apos;d love to ask about...</p>
         <textarea
           placeholder="Whatever your heart desires :)"
           className={`${

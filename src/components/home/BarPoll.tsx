@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
@@ -57,7 +57,7 @@ const Options: React.FC<OptionsProps> = ({ votes, setVotes }) => {
   return (
     <div className="col-span-1 py-12">
       <h3 className="mb-6 text-3xl font-semibold text-slate-50">
-        What's your opinion?
+        What&apos;s your opinion?
       </h3>
       <div className="mb-6 space-y-2">
         {votes.map((vote) => {
@@ -119,7 +119,7 @@ const Bars: React.FC<BarsProps> = ({ votes }) => {
               />
               <span className="absolute bottom-0 left-[50%] mt-2 inline-block w-full -translate-x-[50%] p-2 text-center text-sm text-slate-50">
                 <b>{vote.title}</b>
-                <br></br>
+                <br />
                 <span className="text-xs text-slate-200">
                   {vote.votes} votes
                 </span>
