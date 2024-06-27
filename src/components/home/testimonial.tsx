@@ -88,7 +88,7 @@ const Content = ({ setFeatureInView, featureInView }: { setFeatureInView: React.
           featureInView.contentPosition === "l" ? "flex-start" : "flex-end",
       }}
     >
-      <div className="grid h-full w-full place-content-center px-4 py-12 md:w-2/5 md:px-8 md:py-8">
+      <div className="grid h-full w-full  place-content-center px-4 py-12 md:w-2/5 md:px-8 md:py-8">
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
