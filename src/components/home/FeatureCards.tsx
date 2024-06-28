@@ -1,136 +1,65 @@
-"use client";
+import React from "react";
+import { FaInfoCircle } from "react-icons/fa";
+import { PiLineSegmentsBold } from "react-icons/pi";
+import { BsCalendar2DateFill } from "react-icons/bs";
+import { GrUserWorker } from "react-icons/gr";
+import { GiPayMoney } from "react-icons/gi";
+import { GrResources } from "react-icons/gr";
+import { FaLocationDot } from "react-icons/fa6";
+import { GiMoneyStack } from "react-icons/gi";
+import Card from "../home/card/card";
+const cardData = [
+  {
+    title: "Notes",
+    description:
+      "Check the availability of the photographer or make-up artist of your segment and mark the date on the calendar.",
+    imageUrl: "https://i.postimg.cc/zXG3Fd1d/2.png",
+    icon: <BsCalendar2DateFill />,
+  },
+  {
+    title: "Videos",
+    description:
+      "From our Services tab go through the available photographers and makeup artists and choose the person you like.",
+    imageUrl: "https://i.postimg.cc/pLgTxR57/3.png",
+    icon: <GrUserWorker />,
+  },
+  {
+    title: "PYQs",
+    description:
+      "You have to pay 30% of the total amount as an advance to confirm your booking. The remaining amount can be paid after the event.",
+    imageUrl: "https://i.postimg.cc/Dyp0jqv7/4.png",
+    icon: <GiPayMoney />,
+  },
 
-import { cn } from "../../utils/cn";
-import Image from "next/image";
-import React, {
-  createContext,
-  useState,
-  useContext,
-  useRef,
-  useEffect,
-} from "react";
-
-const MouseEnterContext = createContext<
-  [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined
->(undefined);
-
-export const CardContainer = ({
-  children,
-  className,
-  containerClassName,
-}: {
-  children?: React.ReactNode;
-  className?: string;
-  containerClassName?: string;
-}) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isMouseEntered, setIsMouseEntered] = useState(false);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
-    const { left, top, width, height } =
-      containerRef.current.getBoundingClientRect();
-    const x = (e.clientX - left - width / 2) / 25;
-    const y = (e.clientY - top - height / 2) / 25;
-    containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-  };
-
-  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
-    setIsMouseEntered(true);
-    if (!containerRef.current) return;
-  };
-
-  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
-    setIsMouseEntered(false);
-    containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;
-  };
+];
+const Workflow = () => {
   return (
-    <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
-      <div
-        className={cn(
-          "py-20 flex items-center justify-center",
-          containerClassName
-        )}
-        style={{
-          perspective: "1000px",
-        }}
-      >
-        <div
-          ref={containerRef}
-          onMouseEnter={handleMouseEnter}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          className={cn(
-            "flex items-center justify-center relative transition-all duration-200 ease-linear",
-            className
-          )}
-          style={{
-            transformStyle: "preserve-3d",
-          }}
-        >
-          {children}
+    <div className="simplify-container">
+      <div className="text-black font-playfair p-5">
+        <div>
+          <h1 className="text-2xl font-semibold font-playfair text-gray-800 capitalize lg:text-3xl">
+          Our Other Features
+          </h1>
+          <div className="mt-2">
+            <span className="inline-block w-80 h-1 bg-orange-500 rounded-full"></span>
+            <span className="inline-block w-5 h-1 ml-1 bg-orange-500 rounded-full"></span>
+            <span className="inline-block w-2 h-1 ml-1 bg-orange-500 rounded-full"></span>
+          </div>
+        </div>
+        <div className="cardContainer">
+          {cardData.map((card, index) => (
+            <Card
+              key={index}
+              title={card.title}
+              description={card.description}
+              imageUrl={card.imageUrl}
+              icon={card.icon}
+            />
+          ))}
         </div>
       </div>
     </div>
   );
 };
 
-export const CardItem = ({
-  as: Tag = "div",
-  children,
-  className,
-  translateX = 0,
-  translateY = 0,
-  translateZ = 0,
-  rotateX = 0,
-  rotateY = 0,
-  rotateZ = 0,
-  ...rest
-}: {
-  as?: React.ElementType;
-  children: React.ReactNode;
-  className?: string;
-  translateX?: number | string;
-  translateY?: number | string;
-  translateZ?: number | string;
-  rotateX?: number | string;
-  rotateY?: number | string;
-  rotateZ?: number | string;
-  [key: string]: any;
-}) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isMouseEntered] = FeatureCards();
-
-  useEffect(() => {
-    handleAnimations();
-  }, [isMouseEntered]);
-
-  const handleAnimations = () => {
-    if (!ref.current) return;
-    if (isMouseEntered) {
-      ref.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
-    } else {
-      ref.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
-    }
-  };
-
-  return (
-    <Tag
-      ref={ref}
-      className={cn("w-fit transition duration-200 ease-linear", className)}
-      {...rest}
-    >
-      {children}
-    </Tag>
-  );
-};
-
-// Create a hook to use the context
-export const FeatureCards = () => {
-  const context = useContext(MouseEnterContext);
-  if (context === undefined) {
-    throw new Error("useMouseEnter must be used within a MouseEnterProvider");
-  }
-  return context;
-};
+export default Workflow;
