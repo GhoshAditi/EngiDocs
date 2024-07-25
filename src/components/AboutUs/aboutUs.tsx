@@ -26,7 +26,7 @@ const AboutUs = () => {
       <h4 className="absolute top-[20%] left-[20%] right-[20%] text-slate-200 text-s md:text-lg pointer-events-none">
         <p>Welcome to EngiDocs &ndash; the ultimate hub for engineering students! Whether you&apos;re a freshman finding your footing or a senior gearing up for final exams, we&apos;ve got you covered. Our platform offers a comprehensive collection of notes, engaging videos, and previous years&apos; question papers (PYQs) for every year, subject, and stream in engineering.</p>
         <p>Our star feature? An advanced summarizer that distills the essence of your PDFs, highlighting the crucial points you need to ace your exams. Say goodbye to endless hours of sifting through pages and hello to efficient, targeted studying.</p>
-        <p>Join AceAcademy today and revolutionize the way you learn. Dive into a world where knowledge is just a click away!</p>
+        <p>Join EngiDocs today and revolutionize the way you learn. Dive into a world where knowledge is just a click away!</p>
       </h4>
     </div>
   );
