@@ -5,11 +5,22 @@ import { BsFillCloudyFill, BsStarFill } from "react-icons/bs";
 const ToggleWrapper = () => {
   const [mode, setMode] = useState("dark");
 
+  // Retrieve the theme from localStorage when the component mounts
   useEffect(() => {
+    const savedMode = localStorage.getItem("theme");
+    if (savedMode) {
+      setMode(savedMode);
+      document.body.setAttribute("data-theme", savedMode);
+    }
+  }, []);
+
+  // Update localStorage and body attribute whenever the mode changes
+  useEffect(() => {
+    localStorage.setItem("theme", mode);
     if (mode === "dark") {
       document.body.setAttribute("data-theme", "dark");
     } else {
-      document.body.removeAttribute("data-theme");
+      document.body.setAttribute("data-theme", "light");
     }
   }, [mode]);
 

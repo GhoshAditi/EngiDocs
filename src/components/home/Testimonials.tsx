@@ -1,10 +1,57 @@
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { FiDollarSign, FiEye, FiPlay, FiSearch } from "react-icons/fi";
+import Image from "next/image";
+
+type Feature = {
+  id: number;
+  title: string;
+  description: string;
+  contentPosition: string;
+  imageSrc: string;
+};
+
+const features = [
+  {
+    id: 1,
+    title: "Debayudh Basu",
+    description:
+      "EngiDocs has been a lifesaver for me. I struggle with note-taking and often miss key points during lectures. Having access to comprehensive and well-structured notes from my peers has allowed me to stay on top of my coursework and understand the material better. The ability to compare different sets of notes also gave me new insights and helped reinforce my learning. This resource has made a huge difference in my academic performance.",
+    contentPosition: "r",
+    imageSrc: "/images/debayudhBasu.webp",
+  },
+  {
+    id: 2,
+    title: "Chandrima Ghosh",
+    description:
+      "Using EngiDocs was a game-changer for me. The detailed lecture notes and summaries provided by my friends gave me a clearer understanding of complex topics. I was able to study more efficiently and improve my grades significantly. The notes were well-organized and covered everything my professor discussed in class. It was like having a study group available 24/7.",
+    contentPosition: "l",
+    imageSrc: "/images/chandrimaGhosh.webp",
+  },
+  {
+    id: 3,
+    title: "Arnab Mondal",
+    description:
+      "The notes I found on EngiDocs were invaluable during exam preparation. As an engineering student, sometimes I struggled to keep up with the pace of the lectures. The notes provided different perspectives and explanations that clarified confusing concepts. They also included helpful tips and mnemonics that made remembering information easier. My GPA has improved, and I feel more confident in my classes.",
+    contentPosition: "r",
+    imageSrc: "/images/ArnabMondal.webp",
+  },
+  {
+    id: 4,
+    title: "Debjit Deb Barman",
+    description:
+      "Being able to access notes from other students has saved me countless hours. It is quite difficult to take thorough notes during lectures. EngiDocs filled in the gaps and ensured I didn’t miss any important information. I also loved contributing my own notes and helping others. It’s created a supportive academic community where we all help each other succeed.",
+    contentPosition: "l",
+    imageSrc: "/images/debjitDebBarman.webp",
+  },
+];
 
 const Testimonial = () => {
   return (
     <>
+      <div className="text-center">
+        <h1 className="text-4xl font-bold">Our Alumni</h1>
+        <div className="mx-auto mt-2 h-1 w-24 bg-orange-500 rounded"></div>
+      </div>
       <SwapColumnFeatures />
     </>
   );
@@ -32,17 +79,6 @@ const SwapColumnFeatures = () => {
   );
 };
 
-import { IconType } from "react-icons";
-
-type Feature = {
-  id: number;
-  callout: string;
-  title: string;
-  description: string;
-  contentPosition: string;
-  Icon: IconType;
-};
-
 const SlidingFeatureDisplay = ({ featureInView }: { featureInView: Feature }) => {
   return (
     <div
@@ -59,7 +95,7 @@ const SlidingFeatureDisplay = ({ featureInView }: { featureInView: Feature }) =>
           stiffness: 400,
           damping: 25,
         }}
-        className="h-fit w-3/5 rounded-xl p-8"
+        className="h-fit w-3/5 rounded-full p-8"
       >
         <ExampleFeature featureInView={featureInView} />
       </motion.div>
@@ -77,7 +113,7 @@ const Content = ({ setFeatureInView, featureInView }: { setFeatureInView: React.
     if (isInView) {
       setFeatureInView(featureInView);
     }
-  }, [isInView]);
+  }, [isInView, setFeatureInView, featureInView]);
 
   return (
     <section
@@ -88,15 +124,13 @@ const Content = ({ setFeatureInView, featureInView }: { setFeatureInView: React.
           featureInView.contentPosition === "l" ? "flex-start" : "flex-end",
       }}
     >
-      <div className="grid h-full w-full  place-content-center px-4 py-12 md:w-2/5 md:px-8 md:py-8">
+      <div className="grid h-full w-full place-content-center px-4 py-12 md:w-2/5 md:px-8 md:py-8">
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
-          <span className="rounded-full bg-indigo-600 px-2 py-1.5 text-xs font-medium text-white">
-            {featureInView.callout}
-          </span>
+          
           <p className="my-3 text-5xl font-bold">{featureInView.title}</p>
           <p className="text-slate-600">{featureInView.description}</p>
         </motion.div>
@@ -115,67 +149,15 @@ const Content = ({ setFeatureInView, featureInView }: { setFeatureInView: React.
 
 const ExampleFeature = ({ featureInView }: { featureInView: Feature }) => {
   return (
-    <div className="relative h-96 w-full rounded-xl bg-slate-800 shadow-xl">
-      <div className="flex w-full gap-1.5 rounded-t-xl bg-slate-900 p-3">
-        <div className="h-3 w-3 rounded-full bg-red-500" />
-        <div className="h-3 w-3 rounded-full bg-yellow-500" />
-        <div className="h-3 w-3 rounded-full bg-green-500" />
-      </div>
-      <div className="p-2">
-        <p className="font-mono text-sm text-slate-200">
-          <span className="text-green-300">~</span> Show a part of your product
-          that explains what{" "}
-          <span className="inline-block rounded bg-indigo-600 px-1 font-semibold">
-            &quot;{featureInView.title}&quot;
-          </span>{" "}
-          means.
-        </p>
-      </div>
-
-      <span className="absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] text-9xl text-slate-700">
-        <featureInView.Icon />
-      </span>
+    <div className="relative h-96 w-96 rounded-full bg-slate-800 shadow-xl overflow-hidden">
+      <Image
+        src={featureInView.imageSrc}
+        alt={featureInView.title}
+        layout="fill"
+        objectFit="cover"
+      />
     </div>
   );
 };
 
 export default Testimonial;
-
-const features = [
-  {
-    id: 1,
-    callout: "Get noticed",
-    title: "Its simple",
-    description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor iusto quaerat qui, illo incidunt suscipit fugiat distinctio officia earum eius quae officiis quis harum animi.",
-    contentPosition: "r",
-    Icon: FiEye,
-  },
-  {
-    id: 2,
-    callout: "Find people",
-    title: "They are all here",
-    description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor iusto quaerat qui, illo incidunt suscipit fugiat distinctio officia earum eius quae officiis quis harum animi.",
-    contentPosition: "l",
-    Icon: FiSearch,
-  },
-  {
-    id: 3,
-    callout: "Have fun",
-    title: "Lets party",
-    description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor iusto quaerat qui, illo incidunt suscipit fugiat distinctio officia earum eius quae officiis quis harum animi.",
-    contentPosition: "r",
-    Icon: FiPlay,
-  },
-  {
-    id: 4,
-    callout: "Get paid",
-    title: "Cha-ching!",
-    description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor iusto quaerat qui, illo incidunt suscipit fugiat distinctio officia earum eius quae officiis quis harum animi.",
-    contentPosition: "l",
-    Icon: FiDollarSign,
-  },
-];

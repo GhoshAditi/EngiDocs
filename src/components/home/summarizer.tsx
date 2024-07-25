@@ -1,24 +1,26 @@
 import React from 'react';
 
-export const Content: React.FC = () => {
+const CardComponent: React.FC = () => {
   return (
-    <div className="card glass w-96 h-auto md:h-96 bg-white shadow-lg rounded-lg overflow-hidden">
-      <figure className="h-2/5 bg-gray-200">
-        <img
-          className="w-full h-full object-cover"
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-          alt="car!"
-        />
+    <a href="https://tldr-nice.vercel.app/" target="_blank" rel="noopener noreferrer" className="card glass w-310">
+      <figure>
+        <iframe
+          width="675"
+          height="375"
+          src="https://www.youtube.com/embed/KzrC1MJ_w7A?autoplay=1&loop=1&playlist=KzrC1MJ_w7A"
+          title="TL;DR Demo Video"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
       </figure>
-      <div className="card-body p-4">
-        <h2 className="card-title text-2xl font-bold mb-2">Life hack</h2>
-        <p className="mb-4">How to park your car at your garage?</p>
-        <div className="card-actions justify-end mt-auto">
-          <button className="btn btn-primary bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Learn now!
-          </button>
-        </div>
+      <div className="card-body">
+        <h2 className="card-title">TL;DR: The Life Saviour</h2>
+        <p>Is time short? Don&apos;t worry! Our Summarizer is here to save the day by distilling key points and important topics of each chapter. Study quickly and efficiently, helping you prepare within a short interval to ace your exams with ease!</p>
       </div>
-    </div>
+    </a>
   );
 };
+
+export default CardComponent;

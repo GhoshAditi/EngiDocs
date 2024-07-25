@@ -11,27 +11,27 @@ interface Vote {
 const BarPoll: React.FC = () => {
   const [votes, setVotes] = useState<Vote[]>([
     {
-      title: "Tabs",
-      votes: 1,
+      title: "Loved it!",
+      votes: 15,
       // NOTE: Color assumes a tailwind CSS class.
       // One off colors could be added using something like:
       // bg-[#6366F1]
-      color: "bg-indigo-500",
+      color: "bg-green-500",
     },
     {
-      title: "Spaces",
-      votes: 2,
-      color: "bg-fuchsia-500",
+      title: "It was okay!",
+      votes: 11,
+      color: "bg-blue-500",
     },
     {
-      title: "Who cares bro?",
-      votes: 3,
-      color: "bg-violet-500",
+      title: "I didnt like it!",
+      votes: 7,
+      color: "bg-red-500",
     },
   ]);
 
   return (
-    <section className="bg-slate-900 px-4 py-12">
+    <section className="bg-backround px-4 py-12">
       <div className="mx-auto grid max-w-4xl grid-cols-1 gap-2 md:grid-cols-[1fr_400px] md:gap-12">
         <Options votes={votes} setVotes={setVotes} />
         <Bars votes={votes} />
@@ -56,7 +56,7 @@ const Options: React.FC<OptionsProps> = ({ votes, setVotes }) => {
 
   return (
     <div className="col-span-1 py-12">
-      <h3 className="mb-6 text-3xl font-semibold text-slate-50">
+      <h3 className="mb-6 text-3xl font-semibold text-background">
         What&apos;s your opinion?
       </h3>
       <div className="mb-6 space-y-2">
@@ -74,19 +74,7 @@ const Options: React.FC<OptionsProps> = ({ votes, setVotes }) => {
           );
         })}
       </div>
-      <div className="flex items-center justify-between">
-        <span className="mb-2 italic text-slate-400">{totalVotes} votes</span>
-        <motion.button
-          whileHover={{ scale: 1.015 }}
-          whileTap={{ scale: 0.985 }}
-          onClick={() => {
-            setVotes((pv) => pv.map((v) => ({ ...v, votes: 0 })));
-          }}
-          className="rounded-sm bg-slate-700 px-2 py-1.5 text-sm font-medium text-slate-200"
-        >
-          Reset count
-        </motion.button>
-      </div>
+      
     </div>
   );
 };

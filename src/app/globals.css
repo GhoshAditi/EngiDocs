@@ -1,24 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:wght@400;700&display=swap');
+
+/* Define custom utility classes */
+@layer utilities {
+  .bg-background-light {
+    background-color: var(--bg-color-light);
+  }
+  .bg-background-dark {
+    background-color: var(--bg-color-dark);
+  }
+  .text-copy-light {
+    color: var(--text-color-light);
+  }
+  .text-copy-dark {
+    color: var(--text-color-dark);
+  }
+}
 
 :root {
-  --bg-color: #eff0f0;
-  --text-color: #1a1b1a;
+  --bg-color-light: #F1E5D1;
+  --text-color-light: #45474B;
+  --bg-color-dark: #040D12;
+  --text-color-dark: #eff0f0;
 }
 
 [data-theme="dark"] {
-  --bg-color: #0e0e0e;
-  --text-color: #eff0f0;
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+[data-theme="light"] {
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
 }
 
 html,
 body {
-  @apply bg-background text-copy;
+  @apply bg-background-light text-copy-light;
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  font-family: 'Inter', sans-serif, 'Bona Nova SC', serif;
 }
-

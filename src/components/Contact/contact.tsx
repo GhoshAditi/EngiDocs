@@ -4,7 +4,7 @@ import { useState } from "react";
 const ShiftingContactForm: React.FC = () => {
   const [selected, setSelected] = useState<"individual" | "company">("individual");
   return (
-    <section className="p-4 bg-slate-100 dark:bg-slate-900">
+    <section className="p-4 bg-background">
       <div className="w-full max-w-6xl mx-auto shadow-lg flex flex-col-reverse lg:flex-row rounded-lg overflow-hidden">
         <Form selected={selected} setSelected={setSelected} />
         <Images selected={selected} />
@@ -68,7 +68,7 @@ const Form: React.FC<FormProps> = ({ selected, setSelected }) => {
             <p className="text-2xl mb-2">by the name of...</p>
             <input
               type="text"
-              placeholder="Your company name..."
+              placeholder="Your institution name..."
               className={`${
                 selected === "company" ? "bg-indigo-700" : "bg-violet-700"
               } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
@@ -118,7 +118,7 @@ const FormSelect: React.FC<FormProps> = ({ selected, setSelected }) => {
         } text-sm px-3 py-1.5 transition-colors duration-[750ms] relative`}
         onClick={() => setSelected("individual")}
       >
-        <span className="relative z-10">An individual</span>
+        <span className="relative z-10">A student</span>
         {selected === "individual" && (
           <motion.div
             transition={BASE_TRANSITION}
@@ -133,7 +133,7 @@ const FormSelect: React.FC<FormProps> = ({ selected, setSelected }) => {
         } text-sm px-3 py-1.5 transition-colors duration-[750ms] relative`}
         onClick={() => setSelected("company")}
       >
-        <span className="relative z-10">A company</span>
+        <span className="relative z-10">An Institution</span>
         {selected === "company" && (
           <motion.div
             transition={BASE_TRANSITION}
